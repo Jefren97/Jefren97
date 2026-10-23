@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="referrer" content="strict-origin-when-cross-origin"/>
     <title>Jefren97</title>
     
     <style>
@@ -251,6 +252,90 @@
             animation: none;
         }
     }
+    .seccion-shorts{
+        text-align: center;
+        background: linear-gradient(
+            145deg,
+            rgba(8,11,18,0.96),
+            rgba(0,35,85,0.92),
+            rgba(8,11,18,0.96)
+        );
+        border: 1px solid rgba(57, 191, 255, 0.5);
+        box-shadow: 0 0 18px rgba(22,119,255,0.2),
+        inset 0 0 18px rgba(22,119,255,0.05);
+    }
+    .texto-short{
+        color: #CBD5E1;
+        margin-bottom: 28px;
+    }
+    .rejilla-shorts{
+        display: grid;
+        grid-template-columns: repeat(3,minmax(0,1fr));
+        gap: 18px;
+        align-items:start;
+    }
+    .tarjeta-short{
+        min-width: 0;
+        padding: 12px;
+        background: #080B12;
+        border: 1px solid rgba(22,119,255,0.5);
+        border-radius: 14px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .tarjeta-short:hover{
+        transform: translateY(-5px);
+        border-color: #39BFFF;
+        box-shadow: 0 0 12px rgba(22,119,255,0.7),
+                    0 0 25px rgba(57,191,255,0.2);
+    }
+    .marco-short{
+        position: relative;
+        inset: absolute;
+        aspect-ratio: 9/16;
+        overflow: hidden;
+        border-radius: 9px;
+        background: #000;
+    }
+    .marco-short iframe{
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+    .tarjeta-short h3{
+        color: #39BFFF;
+        font-size: 16px;
+        margin: 14px 0 5px;
+    }
+    .tarjeta-short p{
+        color: #CBD5E1;
+        font-size: 13px;
+        margin: 0 0 8px;
+    }
+    .boton-youtube{
+        margin-top: 28px;
+    }
+    @media(max-width:700px){
+        .rejilla-shorts{
+            grid-template-columns: repeat(2,minmax(0,1fr));
+            gap:12px;
+        }
+        .tarjeta-short{
+            padding: 8px;
+        }
+    }
+    @media(max-width:420px){
+        .rejilla-shorts{
+            grid-template-columns: 1fr;
+        }
+        .tarjeta-short{
+            max-width: 300px;
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
 
     </style>
 </head>
@@ -267,8 +352,9 @@
        <a href="#inicio">Inicio</a>
        <a href="#sobre-mi">Sobre mí</a>
        <a href="#publicaciones">Publicaciones</a>
-       <a href="#contacto">Contacto</a>
        <a href="#galeria">Galeria</a>
+        <a href="#shorts">Youtube Short</a>
+       <a href="#contacto">Contacto</a>
     </nav>
     <main>
       <section id="inicio" class="portada">
@@ -285,14 +371,69 @@
       </section>
       
       <section id="sobre-mi">
-          <h2>Sobre mi</h2>
-          <p>
+            <h2>Sobre mi</h2>
+            <p>
               Hola soy Jefren97, me encantan lo videosjuegos.
-          </p>
+            </p>
       </section>
       <section id="publicaciones">
-          <h2>Mis publicaciones</h2>
-          <p>Pronto encontraras aqui mis fotos, videos, historias y mas.</p>
+            <h2>Mis publicaciones</h2>
+            <p>Pronto encontraras aqui mis fotos, videos, historias y mas.</p>
+      </section>
+      <section id="shorts" class="seccion-shorts">
+            <p class="etiqueta-neon">Jefren97 Gaming</p>
+            <h2>Mis Shorts</h2>
+            <p class="texto-shorts">
+                Las mejores jugadas, momentos épicos y diversión gamer
+            </p>
+            <div class="rejilla-shorts">
+                <article class="tarjeta-short">
+                    <div class="marco-short">
+                        <iframe src="https://www.youtube.com/embed/Mwom3nRyVBE"                    
+                            title="Short de Jefren97 numero 1"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <h3>Mi mejor jugada</h3>
+                    <p>Mira este momento épico</p>
+                </article>
+                <article class="tarjeta-short">
+                    <div class="marco-short">
+                        <iframe src="https://www.youtube.com/embed/g_gyeuuDSQM"                    
+                            title="Short de Jefren97 numero 2"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <h3>Mi mejor jugada</h3>
+                    <p>Mira este momento épico</p>
+                </article>
+                <article class="tarjeta-short">
+                    <div class="marco-short">
+                        <iframe src="https://www.youtube.com/embed/qdHqconfWXA"                    
+                            title="Short de Jefren97 numero 1"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <h3>Mi mejor jugada</h3>
+                    <p>Mira este momento épico</p>
+                </article>
+            </div>
+            <a 
+                class="boton boton-youtube"
+                href="https://www.youtube.com/@jefren97"
+                target="_blank"
+                rel="noopener noreferrer">
+                Visita mi Canal
+            </a>
       </section>
       <section id="galeria" class="galeria">
         <h2>Mis momentos</h2>
@@ -413,7 +554,7 @@
                         ctxNeon.moveTo(p.x,p.y);
                         ctxNeon.lineTo(otra.x,otra.y);
                         
-                        ctxNeon.strokeStyle=`rgba(22,119,255,${0.2*(1 - distancia/105)})`;
+                        ctxNeon.strokeStyle=`rgba(22,119,255,${0.2*(1 - (distancia/105))})`;
                         ctxNeon.lineWidth=0.7;
                         ctxNeon.stroke();
                     }
