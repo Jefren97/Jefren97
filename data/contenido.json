@@ -1,28 +1,19 @@
 {
   "sobreMi": "Hola soy Jefren97, me encantan los videojuegos.",
-  "foto": "imagenes\/app_1794668537028.jpg",
+  "foto": "",
   "tema": {
     "modo": "neon",
     "color": "azul"
   },
-  "publicaciones": [
-    {
-      "id": "1794647717762",
-      "titulo": "Emergencia 🚑🚨",
-      "texto": "Súper juego, me encanta",
-      "fecha": "2026-11-14",
-      "imagen": "",
-      "video": "https:\/\/youtube.com\/shorts\/daBsrV1VuMs?si=vq-bVrZZ5szPanTT"
-    }
-  ],
-  "galeria": [
-    {
-      "id": "1794647208584",
-      "titulo": "Súper juego",
-      "descripcion": "Es un juego muy adictivo",
-      "imagen": "imagenes\/app_1794647206264.jpg"
-    }
-  ],
+  "canalTwitch": "",
+  "discord": "",
+  "envivo": false,
+  "juegos": [],
+  "equipo": [],
+  "horario": "",
+  "publicaciones": [],
+  "galeria": [],
   "streams": [],
-  "redes": []
+  "redes": [],
+  "temporada": true
 }
