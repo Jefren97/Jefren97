@@ -15,7 +15,14 @@
       "video": "https:\/\/youtube.com\/shorts\/PHpDZBiSgJ0?si=KPPCiB2rboRmjlUS"
     }
   ],
-  "galeria": [],
+  "galeria": [
+    {
+      "id": "1794647208584",
+      "titulo": "Súper juego",
+      "descripcion": "Es un juego muy adictivo",
+      "imagen": "imagenes\/app_1794647206264.jpg"
+    }
+  ],
   "streams": [],
   "redes": []
 }
