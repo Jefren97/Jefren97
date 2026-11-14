@@ -5,7 +5,16 @@
     "modo": "neon",
     "color": "azul"
   },
-  "publicaciones": [],
+  "publicaciones": [
+    {
+      "id": "1794646627777",
+      "titulo": "Emergencia🚑🚨",
+      "texto": "Súper juego, me encanta",
+      "fecha": "2026-11-14",
+      "imagen": "imagenes\/app_1794646625557.jpg",
+      "video": "https:\/\/youtube.com\/shorts\/PHpDZBiSgJ0?si=KPPCiB2rboRmjlUS"
+    }
+  ],
   "galeria": [],
   "streams": [],
   "redes": []
