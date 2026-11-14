@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jefren97 · Videojuegos y streams</title>
+<meta name="description" content="Jefren97: un lugar para hablar de videojuegos. Streams, publicaciones y galería.">
+<meta name="theme-color" content="#050816">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎮%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#050816;--azul:#1677FF;--cian:#39BFFF;--txt:#F1F5F9;--sub:#CBD5E1;--gris:#94A3B8;--borde:rgba(22,119,255,.38)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--txt);line-height:1.65;-webkit-font-smoothing:antialiased}
+#fondo{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
+.aura{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60% 50% at 50% 0,rgba(22,119,255,.22),transparent 70%),radial-gradient(40% 40% at 90% 85%,rgba(57,191,255,.08),transparent 70%)}
+.wrap{width:min(1080px,92%);margin-inline:auto}
+/* navegación */
+.nav{position:sticky;top:0;z-index:50;background:rgba(5,8,22,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(57,191,255,.18)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.marca{font-weight:800;font-size:20px;color:#fff;text-decoration:none;text-shadow:0 0 14px rgba(22,119,255,.9)}
+.menu{display:flex;gap:6px}
+.menu a{color:var(--sub);text-decoration:none;padding:8px 14px;border-radius:999px;font-size:15px;transition:.25s}
+.menu a:hover,.menu a.on{color:#fff;background:rgba(22,119,255,.18);box-shadow:inset 0 0 0 1px var(--borde)}
+.burger{display:none;background:none;border:1px solid var(--borde);color:#fff;border-radius:10px;width:42px;height:42px;font-size:20px;cursor:pointer}
+@media(max-width:760px){.burger{display:block}.menu{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;padding:12px 4%;background:rgba(5,8,22,.97);border-bottom:1px solid var(--borde)}.menu.abierto{display:flex}}
+/* hero */
+.hero{text-align:center;padding:84px 0 64px}
+.avatar{width:158px;height:158px;margin:0 auto 22px;border-radius:50%;padding:4px;background:conic-gradient(var(--azul),var(--cian),var(--azul));animation:giro 6s linear infinite;box-shadow:0 0 40px rgba(22,119,255,.55)}
+.avatar img{width:100%;height:100%;display:block;border-radius:50%;object-fit:cover;border:4px solid var(--bg);animation:giro 6s linear infinite reverse}
+@keyframes giro{to{transform:rotate(360deg)}}
+.tag{display:inline-block;padding:6px 14px;border:1px solid var(--borde);border-radius:999px;color:var(--cian);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;background:rgba(22,119,255,.08)}
+.hero h1{font-size:clamp(42px,9vw,78px);line-height:1.05;margin:18px 0 14px;font-weight:800;background:linear-gradient(90deg,#fff,var(--cian),var(--azul));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px rgba(22,119,255,.55))}
+.hero p{max-width:620px;margin:0 auto 28px;color:var(--sub);font-size:18px}
+.acciones{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 24px;border-radius:12px;font:700 15px inherit;font-family:inherit;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--azul),#0A4FD6);border:1px solid var(--cian);box-shadow:0 0 18px rgba(22,119,255,.45);transition:.25s;cursor:pointer}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 30px rgba(57,191,255,.6)}
+.btn.sec{background:transparent;color:var(--cian);box-shadow:none}
+.btn.sec:hover{background:rgba(22,119,255,.14)}
+/* secciones */
+.sec{padding:52px 0}
+.cab span{color:var(--cian);font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+.cab h2{margin:6px 0 26px;font-size:clamp(28px,4.5vw,40px);text-shadow:0 0 18px rgba(22,119,255,.55)}
+.cab h2::after{content:"";display:block;width:64px;height:3px;margin-top:12px;border-radius:3px;background:linear-gradient(90deg,var(--azul),var(--cian));box-shadow:0 0 12px var(--azul)}
+.card{background:linear-gradient(180deg,rgba(17,24,39,.94),rgba(13,20,38,.94));border:1px solid var(--borde);border-radius:18px;overflow:hidden;transition:border-color .3s,box-shadow .3s,transform .3s}
+.card:hover{border-color:var(--cian);box-shadow:0 0 26px rgba(22,119,255,.28);transform:translateY(-4px)}
+.sobre{padding:28px;font-size:18px;color:var(--sub);white-space:pre-line}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.vacio{color:var(--gris);padding:22px;border:1px dashed var(--borde);border-radius:14px}
+.cuerpo{padding:18px}
+.cuerpo h3{margin:0 0 4px;color:var(--cian);font-size:18px}
+.cuerpo p{margin:8px 0 0;color:var(--sub);font-size:15px;white-space:pre-line}
+.cuerpo time{color:var(--gris);font-size:13px}
+/* streams */
+#lista-streams{display:grid;gap:14px}
+.stream{display:flex;gap:16px;align-items:center;padding:16px 18px}
+.fecha{flex:none;width:66px;text-align:center;border-radius:14px;padding:8px 0;background:rgba(22,119,255,.14);border:1px solid var(--borde)}
+.fecha b{display:block;font-size:26px;line-height:1.1;color:#fff}
+.fecha small{color:var(--cian);text-transform:uppercase;font-size:12px;letter-spacing:.1em}
+.stream h3{margin:0;font-size:17px}
+.stream p{margin:2px 0;color:var(--gris);font-size:14px}
+.cuenta{color:var(--cian);font-weight:700;font-size:13px}
+.stream .btn{margin-left:auto;padding:9px 18px;font-size:14px}
+@media(max-width:560px){.stream{flex-wrap:wrap}.stream .btn{margin-left:0;width:100%}}
+/* publicaciones y galería */
+.post img,.post iframe{display:block;width:100%;height:190px;object-fit:cover;border:0}
+.post iframe{height:auto;aspect-ratio:16/9}
+.foto{cursor:zoom-in}
+.marco{overflow:hidden}
+.foto img{display:block;width:100%;height:230px;object-fit:cover;transition:transform .5s}
+.foto:hover img{transform:scale(1.07)}
+.redes{display:flex;flex-wrap:wrap;gap:12px}
+.visor{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:20px;background:rgba(2,4,12,.93);cursor:zoom-out}
+.visor.on{display:grid}
+.visor img{max-width:100%;max-height:88vh;border-radius:14px;box-shadow:0 0 50px rgba(22,119,255,.5)}
+footer{margin-top:40px;padding:30px 0;text-align:center;color:var(--gris);border-top:1px solid var(--borde);background:rgba(5,8,22,.8)}
+.arriba{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:50%;border:1px solid var(--cian);background:rgba(5,8,22,.88);color:var(--cian);font-size:20px;cursor:pointer;opacity:0;pointer-events:none;transition:.3s;z-index:40}
+.arriba.on{opacity:1;pointer-events:auto}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.ver{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="fondo"></canvas><div class="aura"></div>
+
+<nav class="nav"><div class="wrap">
+  <a class="marca" href="#inicio">Jefren97</a>
+  <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <div class="menu" id="menu">
+    <a href="#inicio">Inicio</a><a href="#sobre-mi">Sobre mí</a><a href="#streams">Streams</a>
+    <a href="#publicaciones">Publicaciones</a><a href="#galeria">Galería</a><a href="#contacto">Redes</a>
+  </div>
+</div></nav>
+
+<header id="inicio" class="hero"><div class="wrap">
+  <div class="avatar"><img src="imagenes/Perfil.jpeg" alt="Foto de perfil de Jefren97"></div>
+  <span class="tag">Bienvenidos a mi espacio</span>
+  <h1>Jefren97</h1>
+  <p>Un lugar para hablar de videojuegos: mi vida, mis experiencias, mis fotos y mi historia.</p>
+  <div class="acciones"><a class="btn" href="#streams">Próximos streams</a><a class="btn sec" href="#sobre-mi">Conóceme</a></div>
+</div></header>
+
+<main>
+  <section id="sobre-mi" class="sec"><div class="wrap reveal">
+    <div class="cab"><span>Quién soy</span><h2>Sobre mí</h2></div>
+    <div class="card sobre" id="sobre-texto">Hola, soy Jefren97, me encantan los videojuegos.</div>
+  </div></section>
+
+  <section id="streams" class="sec"><div class="wrap reveal">
+    <div class="cab"><span>Agenda</span><h2>Próximos streams</h2></div>
+    <div id="lista-streams"><div class="vacio">Pronto publicaré las fechas de mis streams.</div></div>
+  </div></section>
+
+  <section id="publicaciones" class="sec"><div class="wrap reveal">
+    <div class="cab"><span>Novedades</span><h2>Publicaciones</h2></div>
+    <div class="grid" id="lista-posts"><div class="vacio">Pronto encontrarás aquí mis fotos, videos e historias.</div></div>
+  </div></section>
+
+  <section id="galeria" class="sec"><div class="wrap reveal">
+    <div class="cab"><span>Recuerdos</span><h2>Mis momentos</h2></div>
+    <div class="grid" id="lista-fotos"></div>
+  </div></section>
+
+  <section id="contacto" class="sec"><div class="wrap reveal">
+    <div class="cab"><span>Conecta conmigo</span><h2>Mis redes sociales</h2></div>
+    <div class="redes" id="lista-redes"><div class="vacio">Muy pronto agregaré mis enlaces.</div></div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">©2026 Jefren97 · Hecho con 💙 para gamers</div></footer>
+<div class="visor" id="visor"><img alt=""></div>
+<button class="arriba" id="arriba" aria-label="Volver arriba">↑</button>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const h=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x)e.textContent=x;return e};
+const seguro=u=>/^https?:\/\//i.test(u||"")?u:"#";
+const yt=u=>{const m=(u||"").match(/(?:youtu\.be\/|v=|shorts\/)([\w-]{11})/);return m?"https://www.youtube.com/embed/"+m[1]:null};
+const enlace=(t,u,c="btn")=>{const a=h("a",c,t);a.href=seguro(u);a.target="_blank";a.rel="noopener noreferrer";return a};
+const vacio=(el,t)=>el.replaceChildren(h("div","vacio",t));
+const FOTOS=[["images01.jpg","Mis aventuras","Momentos que siempre recordaré"],["images02.jpg","Mis momentos","Pequeñas historias de mi vida"],["images03.jpg","Un buen amigo","Amigos que dejan huella"],["images04.jpg","Mis recuerdos","Instantes que se quedan por siempre"]].map(([f,t,d])=>({titulo:t,descripcion:d,imagen:"imagenes/"+f}));
+
+function faltan(t){const m=Math.floor((t-Date.now())/6e4);if(m<=-180)return"";if(m<=0)return"🔴 ¡En vivo ahora!";const d=Math.floor(m/1440),hh=Math.floor(m%1440/60);return"Empieza en "+(d?d+"d ":"")+hh+"h "+(m%60)+"m"}
+function tick(){$$(".cuenta").forEach(e=>e.textContent=faltan(+e.dataset.t))}
+
+function pintar(d){
+  if(d.sobreMi)$("#sobre-texto").textContent=d.sobreMi;
+
+  const lim=Date.now()-3*36e5;
+  const prox=(d.streams||[]).filter(s=>new Date(s.fechaHora)>=lim).sort((a,b)=>new Date(a.fechaHora)-new Date(b.fechaHora));
+  const ls=$("#lista-streams");
+  if(prox.length){ls.replaceChildren();prox.forEach(s=>{
+    const f=new Date(s.fechaHora),a=h("article","card stream"),fe=h("div","fecha"),inf=h("div");
+    fe.append(h("b","",f.getDate()),h("small","",f.toLocaleDateString("es-MX",{month:"short"})));
+    const c=h("span","cuenta");c.dataset.t=f.getTime();
+    inf.append(h("h3","",s.titulo),h("p","",[s.juego,s.plataforma,f.toLocaleTimeString("es-MX",{hour:"2-digit",minute:"2-digit"})].filter(Boolean).join(" · ")),c);
+    a.append(fe,inf);if(s.enlace)a.append(enlace("Ver stream",s.enlace));ls.append(a)});tick()}
+  else vacio(ls,"No hay streams programados por ahora. ¡Vuelve pronto!");
+
+  const lp=$("#lista-posts");
+  if((d.publicaciones||[]).length){lp.replaceChildren();d.publicaciones.forEach(p=>{
+    const a=h("article","card post"),b=h("div","cuerpo");
+    if(p.imagen){const i=h("img");i.src=p.imagen;i.alt=p.titulo;i.loading="lazy";a.append(i)}
+    const y=yt(p.video);if(y){const f=h("iframe");f.src=y;f.title=p.titulo;f.allowFullscreen=true;f.loading="lazy";a.append(f)}
+    b.append(h("h3","",p.titulo),h("time","",p.fecha),h("p","",p.texto));
+    if(p.video&&!y)b.append(enlace("Ver video",p.video,"btn sec"));
+    a.append(b);lp.append(a)})}
+
+  const lf=$("#lista-fotos");lf.replaceChildren();
+  (d.galeria&&d.galeria.length?d.galeria:FOTOS).forEach(f=>{
+    const a=h("article","card foto"),m=h("div","marco"),i=h("img"),b=h("div","cuerpo");
+    i.src=f.imagen;i.alt=f.titulo;i.loading="lazy";m.append(i);
+    b.append(h("h3","",f.titulo),h("p","",f.descripcion));a.append(m,b);
+    a.onclick=()=>{$("#visor img").src=f.imagen;$("#visor").classList.add("on")};lf.append(a)});
+
+  const lr=$("#lista-redes");
+  if((d.redes||[]).length){lr.replaceChildren();d.redes.forEach(r=>lr.append(enlace(r.nombre,r.url)))}
+}
+fetch("data/contenido.json?v="+Date.now()).then(r=>r.ok?r.json():{}).catch(()=>({})).then(pintar);
+setInterval(tick,3e4);
+
+$("#visor").onclick=e=>e.currentTarget.classList.remove("on");
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#visor").classList.remove("on")});
+const menu=$("#menu"),bg=$("#burger");
+bg.onclick=()=>{const o=menu.classList.toggle("abierto");bg.setAttribute("aria-expanded",o)};
+menu.onclick=e=>{if(e.target.tagName==="A"){menu.classList.remove("abierto");bg.setAttribute("aria-expanded",false)}};
+const ar=$("#arriba");ar.onclick=()=>scrollTo({top:0});
+addEventListener("scroll",()=>ar.classList.toggle("on",scrollY>500),{passive:true});
+const rev=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("ver");rev.unobserve(e.target)}}),{threshold:.08});
+$$(".reveal").forEach(e=>rev.observe(e));
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$$(".menu a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+$$("header[id],section[id]").forEach(s=>spy.observe(s));
+
+/* fondo de partículas neón */
+(()=>{const cv=$("#fondo"),cx=cv.getContext("2d");let W,H,P=[];
+const nueva=ini=>({x:Math.random()*W,y:ini?Math.random()*H:H+10,r:Math.random()*2.2+.5,vy:Math.random()*.7+.2,vx:(Math.random()-.5)*.4,b:Math.random()*.7+.3,t:Math.random()>.5?195:215});
+function medir(){const k=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*k;cv.height=H*k;cx.setTransform(k,0,0,k,0,0);P=Array.from({length:Math.min(90,Math.max(30,W/14|0))},()=>nueva(true))}
+function dibujar(){cx.clearRect(0,0,W,H);
+  P.forEach((p,i)=>{p.y-=p.vy;p.x+=p.vx;if(p.y<-10||p.x<-10||p.x>W+10){P[i]=nueva();return}
+    cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.283);cx.fillStyle=`hsla(${p.t},100%,65%,${p.b})`;cx.shadowBlur=14;cx.shadowColor="#168BFF";cx.fill();cx.shadowBlur=0;
+    for(let j=i+1;j<P.length;j++){const o=P[j],d=Math.hypot(p.x-o.x,p.y-o.y);
+      if(d<105){cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(o.x,o.y);cx.strokeStyle=`rgba(22,119,255,${.2*(1-d/105)})`;cx.lineWidth=.7;cx.stroke()}}})}
+medir();addEventListener("resize",medir);
+if(matchMedia("(prefers-reduced-motion: reduce)").matches)dibujar();
+else{(function a(){dibujar();requestAnimationFrame(a)})()}})();
+</script>
+</body>
+</html>
