@@ -1,7 +1,10 @@
 {
   "sobreMi": "Hola soy Jefren97, me encantan los videojuegos.",
   "foto": "",
-  "tema": { "modo": "neon", "color": "azul" },
+  "tema": {
+    "modo": "dibujo",
+    "color": "morado"
+  },
   "publicaciones": [],
   "galeria": [],
   "streams": [],
