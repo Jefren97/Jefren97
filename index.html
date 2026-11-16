@@ -30,7 +30,7 @@ function aplicarTema(modo,color){
   let[a,b]=color==="tema"?(MODOCOL[modo]||COLORES.azul):COLORES[color];
   if(color==="negro"&&!claro)[a,b]=["148,163,184","203,213,225"];
   if(color==="blanco"&&claro)[a,b]=["71,85,105","100,116,139"];
-  const n=a.split(",").map(Number),r=document.documentElement,s=r.style;
+  if(window.FCOL){[a,b]=window.FCOL}const n=a.split(",").map(Number),r=document.documentElement,s=r.style;
   r.dataset.modo=modo;r.dataset.color=color;
   s.setProperty("--rgb",a);s.setProperty("--azul","rgb("+a+")");s.setProperty("--cian","rgb("+b+")");
   s.setProperty("--onacc",(.299*n[0]+.587*n[1]+.114*n[2])>150?"#0B0F1A":"#fff");
@@ -253,6 +253,31 @@ footer{margin-top:50px;padding:34px 0 28px;border-top:var(--bw) solid var(--bc);
 .anillo.grande{width:52px;height:52px;margin:-10px 0 0 -10px;background:rgba(var(--rgb),.15)}
 .temp{position:fixed;top:-40px;z-index:5;pointer-events:none;animation:caer linear infinite}
 @keyframes caer{to{transform:translateY(112vh) rotate(360deg)}}
+
+/* ===== v5: fiestas ===== */
+.banner-fiesta{margin:26px auto 0;max-width:640px;padding:14px 20px;border-radius:var(--rad);border:var(--bw) solid var(--azul);background:rgba(var(--rgb),.1);font-weight:700;white-space:pre-line}
+.cuenta-fiesta{margin-top:12px;font:700 14px ui-monospace,Menlo,Consolas,monospace;color:var(--tit);letter-spacing:.06em}
+.luces{position:fixed;top:0;left:0;right:0;height:14px;z-index:55;pointer-events:none;background-repeat:repeat-x;background-size:80px 14px;background-image:radial-gradient(circle at 10px 8px,#ff3b3b 0 4px,transparent 5px),radial-gradient(circle at 50px 8px,#22c55e 0 4px,transparent 5px);filter:drop-shadow(0 0 4px #ff3b3b);animation:titilar 1.4s steps(1) infinite}
+.luces.b{background-image:radial-gradient(circle at 30px 8px,#facc15 0 4px,transparent 5px),radial-gradient(circle at 70px 8px,#38bdf8 0 4px,transparent 5px);filter:drop-shadow(0 0 4px #facc15);animation-delay:.7s}
+@keyframes titilar{50%{opacity:.25}}
+[data-fiesta=navidad] .card::after{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:radial-gradient(circle at 12px 0,#fff 0 9px,transparent 10px) 0 0/26px 10px repeat-x;filter:drop-shadow(0 1px 1px rgba(0,0,0,.25));pointer-events:none;z-index:3}
+[data-fiesta=navidad] .nav .wrap{position:relative}
+[data-fiesta=navidad] .nav .wrap::after{content:"";position:absolute;left:18px;right:18px;top:-5px;height:9px;background:radial-gradient(circle at 12px 0,#fff 0 8px,transparent 9px) 0 0/24px 9px repeat-x;pointer-events:none}
+.gorro{position:absolute;top:2px;left:50%;margin-left:-8px;width:90px;height:66px;z-index:3;transform:rotate(16deg);pointer-events:none}
+.gorro::before{content:"";position:absolute;left:6px;bottom:10px;width:74px;height:50px;background:#dc2626;border-radius:70% 40% 10% 10%/95% 60% 10% 10%;box-shadow:inset -8px -6px 0 rgba(0,0,0,.15)}
+.gorro::after{content:"";position:absolute;left:0;bottom:0;width:90px;height:18px;border-radius:12px;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.3)}
+.gorro i{position:absolute;right:-2px;top:-2px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 0 6px rgba(0,0,0,.25)}
+.puertas{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:12px}
+.puerta{aspect-ratio:1;border-radius:14px;border:var(--bw) solid var(--bc);background:var(--panel);color:var(--gris);font:800 22px var(--fuente);cursor:pointer;transition:.25s}
+.puerta.abre{background:var(--azul);color:var(--onacc);box-shadow:0 0 18px rgba(var(--rgb),.5)}
+.puerta.abre:hover{transform:translateY(-3px) rotate(-3deg)}
+.puerta:disabled{cursor:not-allowed;opacity:.55}
+.tela{position:fixed;top:56px;z-index:6;font-size:80px;opacity:.55;pointer-events:none}
+.tela.t1{left:-8px}.tela.t2{right:-8px;transform:scaleX(-1)}
+.murci{position:fixed;left:-60px;z-index:6;font-size:28px;pointer-events:none;animation:volar linear infinite}
+@keyframes volar{to{transform:translateX(112vw) translateY(-40px)}}
+.temp.sube{top:auto;bottom:-40px;animation-name:subir}
+@keyframes subir{to{transform:translateY(-112vh) rotate(20deg)}}
 </style>
 </head>
 <body>
@@ -278,6 +303,7 @@ footer{margin-top:50px;padding:34px 0 28px;border-top:var(--bw) solid var(--bc);
   <div class="tipeo"><span id="tipeo"></span><i></i></div>
   <p>Un lugar para hablar de videojuegos: mi vida, mis experiencias, mis fotos y mi historia.</p>
   <div class="acciones"><a class="btn" href="#streams">Próximos streams</a><a class="btn sec" href="#sobre-mi">Conóceme</a><a id="btn-discord" class="btn sec" href="#" target="_blank" rel="noopener noreferrer" hidden>Discord</a></div>
+  <div id="banner-fiesta" class="banner-fiesta" hidden></div><div id="cuenta-fiesta" class="cuenta-fiesta" hidden></div>
   <div class="stats">
     <div><b id="n-streams">0</b><small>Streams</small></div>
     <div><b id="n-posts">0</b><small>Posts</small></div>
@@ -308,6 +334,16 @@ footer{margin-top:50px;padding:34px 0 28px;border-top:var(--bw) solid var(--bc);
   <section id="setup" class="sec" hidden><div class="wrap reveal">
     <div class="cab"><span>// 04 · SETUP</span><h2>Mi setup y juegos favoritos</h2></div>
     <div class="grid" id="lista-setup"></div>
+  </div></section>
+
+  <section id="adviento" class="sec" hidden><div class="wrap reveal">
+    <div class="cab"><span>// FIESTAS</span><h2>Calendario de adviento</h2></div>
+    <div class="puertas" id="adv-grid"></div>
+  </div></section>
+
+  <section id="altar" class="sec" hidden><div class="wrap reveal">
+    <div class="cab"><span>// MEMORIA</span><h2>Mi altar de recuerdos gamer</h2></div>
+    <div class="grid" id="altar-grid"></div>
   </div></section>
 
   <section id="galeria" class="sec"><div class="wrap reveal">
@@ -349,7 +385,7 @@ function faltan(t){const m=Math.floor((t-Date.now())/6e4);if(m<=-180)return"";if
 function tick(){$$(".cuenta").forEach(e=>e.textContent=faltan(+e.dataset.t))}
 
 let DATOS={};function pintar(d){DATOS=d;
-  const T=d.tema||{};aplicarTema(T.modo,T.color);temporada(d.temporada);
+  aplicarFiesta(d);const T=d.tema||{};aplicarTema(T.modo,T.color);fiestaExtras(d);
   if(ruta(d.foto))$("#foto").src=d.foto;
   contar($("#n-posts"),(d.publicaciones||[]).filter(p=>!p.programada||new Date(p.programada)<=Date.now()).length);contar($("#n-fotos"),(d.galeria&&d.galeria.length)||FOTOS.length);
   contar($("#n-streams"),(d.streams||[]).filter(s=>new Date(s.fechaHora)>=Date.now()-108e5).length);
@@ -471,7 +507,7 @@ const SEC={inicio:"#inicio",sobre:"#sobre-mi","sobre-mi":"#sobre-mi",streams:"#s
 const fx=t=>new Date(t).toLocaleString("es-MX",{dateStyle:"medium",timeStyle:"short"});
 const canal=()=>/^\w{3,25}$/.test(DATOS.canalTwitch||"")?DATOS.canalTwitch:"";
 const C={
- help:()=>w("Comandos disponibles:\n  about · streams · next · live · posts · galeria · redes · contact\n  open <red>   abre twitch, discord u otra red\n  goto <x>     ir a una sección   ·   ls  ver secciones\n  copy         copia el enlace de la página\n  neofetch · whoami · date · echo · history [-c] · clear\n  man <cmd>    explica un comando\n  Juegos:  snake · typing · adivina · dado [n] · moneda\n  Extras:  fortune · cowsay <texto> · tema <modo> <color> · logros · confeti · matrix · hack\n  exit         cerrar la terminal\n  (Tab autocompleta · ↑↓ historial · Ctrl+L limpia)","acc"),
+ help:()=>w("Comandos disponibles:\n  about · streams · next · live · posts · galeria · redes · contact\n  open <red>   abre twitch, discord u otra red\n  goto <x>     ir a una sección   ·   ls  ver secciones\n  copy         copia el enlace de la página\n  neofetch · whoami · date · echo · history [-c] · clear\n  man <cmd>    explica un comando\n  Juegos:  snake · typing · adivina · dado [n] · moneda\n  Extras:  fortune · cowsay <texto> · tema <modo> <color> · logros · confeti · fiesta · santa · regalo · nieve · matrix · hack\n  exit         cerrar la terminal\n  (Tab autocompleta · ↑↓ historial · Ctrl+L limpia)","acc"),
  about:async()=>tipear(DATOS.sobreMi||"Hola, soy Jefren97, me encantan los videojuegos.",""),
  streams:()=>{const l=(DATOS.streams||[]).filter(s=>new Date(s.fechaHora)>=Date.now()-108e5).sort((a,b)=>new Date(a.fechaHora)-new Date(b.fechaHora));
    if(!l.length)return w("Sin streams programados por ahora.","err");l.forEach(s=>w(`▶ ${fx(s.fechaHora)}  ${s.titulo}${s.juego?" · "+s.juego:""}${s.plataforma?" ["+s.plataforma+"]":""}`,"ok"))},
@@ -563,6 +599,12 @@ const C={
    logro("glitch");await tipear("…es broma 😄 todo está intacto.","ok")},
  logros:()=>{const n=Object.keys(GOT).length;w(`🏆 ${n}/${Object.keys(LOGROS).length} logros · ${n*50} XP`,"acc");Object.entries(LOGROS).forEach(([k,L])=>w((GOT[k]?"✔ ":"✖ ")+L[0]+" "+L[1]+" — "+L[2],GOT[k]?"ok":""))},
  confeti:()=>{confeti(160);w("🎉","ok")},
+ fiesta:()=>{const F=fiestaId&&FIESTAS[fiestaId];w(F?"🎉 Fiesta activa: "+F.n.replace(/^(el|las) /,""):"Sin fiesta activa ahora.",F?"ok":"acc")},
+ santa:()=>{logro("navideno");w("🎅 ¡JO JO JO! ¡Feliz Navidad, gamer!","ok");campanas()},
+ regalo:()=>{const r=["una skin legendaria ✨","+100 de suerte en tus partidas 🍀","un abrazo virtual 🤗","un logro secreto 🏅","café infinito ☕","cero lag por 24 horas 📶"];
+   logro("navideno");w("🎁 Abres el regalo… ¡tienes "+r[Math.random()*r.length|0]+"!","ok");confeti(80);campanas()},
+ nieve:()=>{lluviaEmojis(["❄️","❅","❄️"],false);lluviaEmojis(["❄️"],false);w("❄️ ¡Nevando más fuerte!","acc")},
+ campanas:()=>{campanas();w("🔔 ding ding ding (activa el sonido con el botón 🔇 para oírlas)","acc")},
  exit:()=>cerrar(),
  hack:async()=>{await tipear("Iniciando intrusión en el mainframe…","err",18);const d=w("");
    for(let i=0;i<=100;i+=4){d.textContent=`[${"█".repeat(i/4)}${"░".repeat(25-i/4)}] ${i}%`;O.scrollTop=O.scrollHeight;if(!RM)await sleep(55)}
@@ -617,7 +659,7 @@ document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("a,b
 document.addEventListener("mouseover",e=>{if(e.target.closest&&e.target.closest(".btn,.menu a"))beep(1200,.02,"square",.015)});
 $("#termIn").addEventListener("input",()=>beep(900,.015,"square",.025));
 
-const LOGROS={explorador:["🧭","Explorador","Llegaste al final de la página"],terminal:["💻","Hacker novato","Abriste la terminal"],serpiente:["🐍","Maestro Snake","10 puntos en snake"],konami:["🎮","Código secreto","Encontraste el código Konami"],fotos:["🖼️","Curioso","Abriste una foto de la galería"],comandos:["⌨️","Power user","Usaste 8 comandos distintos"],glitch:["💥","Destructor","Ejecutaste sudo rm -rf /"],estilista:["🎨","Estilista","Cambiaste el tema desde la terminal"]};
+const LOGROS={explorador:["🧭","Explorador","Llegaste al final de la página"],terminal:["💻","Hacker novato","Abriste la terminal"],serpiente:["🐍","Maestro Snake","10 puntos en snake"],konami:["🎮","Código secreto","Encontraste el código Konami"],fotos:["🖼️","Curioso","Abriste una foto de la galería"],comandos:["⌨️","Power user","Usaste 8 comandos distintos"],glitch:["💥","Destructor","Ejecutaste sudo rm -rf /"],estilista:["🎨","Estilista","Cambiaste el tema desde la terminal"],navideno:["🎅","Espíritu navideño","Saludaste a Santa o abriste un regalo"],adviento:["📅","Adviento gamer","Abriste una puerta del calendario de adviento"]};
 let GOT={};try{GOT=JSON.parse(localStorage.logros||"{}")}catch(e){}
 function xpUI(){const ks=Object.keys(LOGROS),n=ks.filter(k=>GOT[k]).length,xp=n*50;
   $("#nivel").textContent="NIVEL "+(1+Math.floor(xp/100));$("#xpi").style.width=(xp%100)+"%";$("#xpn").textContent=xp+" XP · "+n+"/"+ks.length;
@@ -629,9 +671,65 @@ function confeti(n=90){if(RM)return;const c=h("canvas");c.style.cssText="positio
   const x=c.getContext("2d"),cols=["rgb("+(window.ACC||"22,119,255")+")","#fff","#FF2EA6","#FACC15","#22E58B","#00E5FF"];
   const P=Array.from({length:n},()=>({x:innerWidth/2+(Math.random()-.5)*160,y:innerHeight*.35,vx:(Math.random()-.5)*14,vy:-Math.random()*12-4,r:Math.random()*6+3,c:cols[Math.random()*cols.length|0],a:Math.random()*6}));
   let f=0;(function d(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.a+=.2;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);x.restore()});if(++f<140)requestAnimationFrame(d);else c.remove()})()}
-function temporada(on){document.querySelectorAll(".temp").forEach(e=>e.remove());if(on===false||RM)return;const m=new Date().getMonth()+1,dd=new Date().getDate();let em=null;
-  if((m===10&&dd>=15)||(m===11&&dd<=2))em=["🎃","👻","🦇","🕸️"];else if((m===12&&dd>=10)||(m===1&&dd<=6))em=["❄️","🎄","⭐","🎁"];if(!em)return;
-  for(let i=0;i<14;i++){const e=h("span","temp",em[i%em.length]);e.style.cssText=`left:${Math.random()*100}vw;animation-duration:${9+Math.random()*10}s;animation-delay:${-Math.random()*12}s;font-size:${16+Math.random()*16}px`;document.body.append(e)}}
+const FIESTAS={
+ navidad:{n:"Navidad",e:["❄️","🎄","⭐","🎁"],a:["220,38,38","250,204,21"],msg:"🎄 ¡Felices fiestas!",f:y=>new Date(y,11,25),w:[[12,1,12,30]]},
+ anonuevo:{n:"Año Nuevo",e:["🎆","✨","🥂","🎉"],a:["250,204,21","255,70,160"],msg:"🎆 ¡Feliz Año Nuevo!",f:y=>new Date(y,0,1),w:[[12,31,1,2]]},
+ muertos:{n:"Día de Muertos",e:["🌼","💀","🕯️","🏵️"],a:["255,140,0","168,85,247"],msg:"💀🌼 Día de Muertos: recordando a quienes nos inspiran",f:y=>new Date(y,10,2),w:[[10,29,11,2]]},
+ halloween:{n:"Halloween",e:["🎃","👻","🦇","🕷️"],a:["255,117,24","168,85,247"],msg:"🎃 ¡Feliz Halloween!",f:y=>new Date(y,9,31),w:[[10,15,10,28]]},
+ guadalupe:{n:"el Día de la Virgen de Guadalupe",e:["🌹","🌸","✨"],a:["34,197,94","255,163,214"],msg:"🌹 Día de la Virgen de Guadalupe",f:y=>new Date(y,11,12),w:[[12,11,12,12]]},
+ reyes:{n:"el Día de Reyes",e:["👑","⭐","🎁"],a:["250,204,21","139,92,246"],msg:"👑 ¡Feliz Día de Reyes!",f:y=>new Date(y,0,6),w:[[1,3,1,6]]},
+ patrios:{n:"las fiestas patrias",e:["🇲🇽","🎉","🌶️","🎺"],a:["0,150,80","220,38,38"],msg:"🇲🇽 ¡Viva México!",f:y=>new Date(y,new Date().getMonth()>=9?10:8,new Date().getMonth()>=9?20:16),w:[[9,12,9,17],[11,18,11,20]]},
+ sanvalentin:{n:"San Valentín",e:["❤️","💕","💘","🌹"],a:["255,70,160","255,59,92"],msg:"💘 ¡Feliz San Valentín!",f:y=>new Date(y,1,14),w:[[2,10,2,14]]}
+};
+const ORDEN=["guadalupe","navidad","anonuevo","reyes","sanvalentin","patrios","muertos","halloween"];
+let fiestaId=null,fiestaManual=false,fiestaT,fuegosOn=null;
+const hoyS=()=>{const t=new Date();return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0")};
+function enVentana(w){const t=new Date(),k=(t.getMonth()+1)*100+t.getDate();return w.some(([m1,d1,m2,d2])=>{const a=m1*100+d1,b=m2*100+d2;return a<=b?(k>=a&&k<=b):(k>=a||k<=b)})}
+function fiestaActiva(d){const c=d.fiesta||{},id=c.id||"auto";
+  if(id==="ninguna"||id==="ninguno")return null;
+  if(id==="auto")return ORDEN.find(k=>enVentana(FIESTAS[k].w))||null;
+  if(!FIESTAS[id])return null;const h0=hoyS();
+  if(c.desde&&h0<c.desde)return null;if(c.hasta&&h0>c.hasta)return null;return id}
+function aplicarFiesta(d){clearInterval(fiestaT);document.querySelectorAll(".temp,.luces,.gorro,.tela,.murci").forEach(e=>e.remove());stopFuegos();
+  fiestaId=fiestaActiva(d);fiestaManual=!!(d.fiesta&&d.fiesta.id&&d.fiesta.id!=="auto");
+  window.FCOL=fiestaId?FIESTAS[fiestaId].a:null;const r=document.documentElement;if(fiestaId)r.dataset.fiesta=fiestaId;else delete r.dataset.fiesta}
+function lluviaEmojis(em,sube){if(RM)return;for(let i=0;i<14;i++){const e=h("span","temp"+(sube?" sube":""),em[i%em.length]);
+  e.style.cssText=`left:${Math.random()*100}vw;animation-duration:${9+Math.random()*10}s;animation-delay:${-Math.random()*12}s;font-size:${16+Math.random()*16}px`;document.body.append(e)}}
+function campanas(){[1318,1568,1318,1568,1760].forEach((f,i)=>setTimeout(()=>beep(f,.25,"sine",.07),i*190))}
+function fuegos(){if(RM||fuegosOn)return;const c=h("canvas");c.id="fuegos";c.style.cssText="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:4";c.width=innerWidth;c.height=innerHeight;document.body.append(c);
+  const x=c.getContext("2d"),cols=["255,70,160","250,204,21","0,229,255","255,255,255","34,197,94"];let P=[],last=0;
+  fuegosOn=requestAnimationFrame(function a(t){x.globalCompositeOperation="destination-out";x.fillStyle="rgba(0,0,0,.18)";x.fillRect(0,0,c.width,c.height);x.globalCompositeOperation="lighter";
+    if(t-last>1100){last=t;const px=Math.random()*c.width,py=Math.random()*c.height*.5+40,col=cols[Math.random()*cols.length|0];for(let i=0;i<48;i++){const an=Math.random()*6.283,v=Math.random()*4+1.5;P.push({x:px,y:py,vx:Math.cos(an)*v,vy:Math.sin(an)*v,l:1,c:col})}}
+    P=P.filter(p=>p.l>0);P.forEach(p=>{p.vy+=.04;p.x+=p.vx;p.y+=p.vy;p.l-=.012;x.fillStyle=`rgba(${p.c},${p.l})`;x.fillRect(p.x,p.y,2.4,2.4)});
+    fuegosOn=requestAnimationFrame(a)})}
+function stopFuegos(){if(fuegosOn){cancelAnimationFrame(fuegosOn);fuegosOn=null}const c=$("#fuegos");if(c)c.remove()}
+function armarAdviento(d){const L=(d.adviento||[]).map(x=>String(x||"").trim());if(!L.some(Boolean))return false;
+  const g=$("#adv-grid");g.replaceChildren();const t=new Date(),hoy=t.getMonth()===11?Math.min(t.getDate(),24):(fiestaManual?24:0);
+  for(let i=1;i<=24;i++){const b=h("button","puerta"+(i<=hoy?" abre":""),String(i));b.disabled=i>hoy;b.setAttribute("aria-label","Día "+i);
+    b.onclick=()=>{toast("🎁 Día "+i+": "+(L[i-1]||"¡Sorpresa pronto!"));beep(784,.12,"triangle",.06);logro("adviento")};g.append(b)}
+  return true}
+function armarAltar(d){const L=(d.altar||[]).map(x=>String(x||"").trim()).filter(Boolean);if(!L.length)return false;
+  const g=$("#altar-grid");g.replaceChildren();L.slice(0,12).forEach(t=>{const a=h("article","card"),b=h("div","cuerpo");b.append(h("h3","","🕯️"),h("p","",t));a.append(b);g.append(a)});return true}
+function fiestaExtras(d){
+  const F=fiestaId&&FIESTAS[fiestaId],ban=$("#banner-fiesta"),cu=$("#cuenta-fiesta"),ad=$("#adviento"),al=$("#altar");
+  ban.hidden=cu.hidden=ad.hidden=al.hidden=true;
+  const t=new Date(),md=String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0");let extra="";
+  if(d.cumple&&d.cumple===md){extra="🎂 ¡Hoy es cumpleaños de Jefren97!";setTimeout(()=>confeti(160),800)}
+  if(/^\d{4}-\d{2}-\d{2}$/.test(d.aniversario||"")&&d.aniversario.slice(5)===md){const n=t.getFullYear()-+d.aniversario.slice(0,4);if(n>0)extra=(extra?extra+" · ":"")+"🎉 "+n+(n===1?" año":" años")+" de esta página"}
+  const msg=(d.mensajeFiesta||"").trim(),textos=[extra,F?(msg||F.msg):msg].filter(Boolean);
+  if(textos.length){ban.textContent=textos.join("\n");ban.hidden=false}
+  if(!F)return;
+  lluviaEmojis(F.e,fiestaId==="sanvalentin");
+  const calc=()=>{const n=Date.now(),y=new Date().getFullYear();let t0=F.f(y).getTime();if(n>t0+2*864e5)t0=F.f(y+1).getTime();const ms=t0-n;
+    if(ms<=0)return"🎉 ¡Hoy es "+F.msg.replace(/^\S+\s*/,"")+"!";const s=Math.floor(ms/1e3),p2=v=>String(v).padStart(2,"0");
+    return"Faltan "+Math.floor(s/86400)+"d "+p2(Math.floor(s%86400/3600))+"h "+p2(Math.floor(s%3600/60))+"m "+p2(s%60)+"s para "+F.n};
+  const pc=()=>{cu.textContent=calc()};pc();cu.hidden=false;fiestaT=setInterval(pc,1000);
+  if(fiestaId==="navidad"){document.body.append(h("div","luces"),h("div","luces b"));const g=h("div","gorro");g.append(h("i"));$(".orbita").append(g);ad.hidden=!armarAdviento(d)}
+  if(fiestaId==="anonuevo")fuegos();
+  if(fiestaId==="muertos")al.hidden=!armarAltar(d);
+  if(fiestaId==="halloween"){document.body.append(h("span","tela t1","🕸️"),h("span","tela t2","🕸️"));
+    for(let i=0;i<4;i++){const m=h("span","murci","🦇");m.style.cssText=`top:${8+Math.random()*50}vh;animation-delay:${i*3.5}s;animation-duration:${14+Math.random()*8}s`;document.body.append(m)}}
+}
 if(FINO&&!RM){const r=h("div","anillo");document.body.append(r);let x=0,y=0;(function m(){x+=(MX-x)*.18;y+=(MY-y)*.18;r.style.transform=`translate(${x}px,${y}px)`;requestAnimationFrame(m)})();
   document.addEventListener("mouseover",e=>r.classList.toggle("grande",!!(e.target.closest&&e.target.closest("a,button,.card,input"))))}
 new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)logro("explorador")}),{threshold:.6}).observe($("footer"));
