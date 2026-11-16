@@ -24,7 +24,18 @@
     "modo": "oscuro",
     "color": "azul"
   },
-  "publicaciones": [],
+  "publicaciones": [
+    {
+      "id": "1794794958215",
+      "titulo": "Emergencia 🚨🚑",
+      "texto": "Me encanta ese juego",
+      "fecha": "2026-11-15",
+      "imagen": "imagenes\/app_1794794954716_0.jpg",
+      "video": "https:\/\/youtube.com\/shorts\/daBsrV1VuMs?si=SSXCo5EpQHGDUX_D",
+      "fijado": true,
+      "programada": ""
+    }
+  ],
   "galeria": [],
   "streams": [],
   "redes": []
