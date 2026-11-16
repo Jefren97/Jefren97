@@ -10,8 +10,8 @@
   "temporada": true,
   "fiesta": {
     "id": "navidad",
-    "desde": "",
-    "hasta": ""
+    "desde": "2026-11-15",
+    "hasta": "2026-11-16"
   },
   "mensajeFiesta": "",
   "adviento": [
