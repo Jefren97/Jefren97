@@ -1,0 +1,31 @@
+{
+  "sobreMi": "Hola soy Jefren97, me encantan los videojuegos.",
+  "foto": "imagenes\/app_1794794683411_0.jpg",
+  "canalTwitch": "",
+  "discord": "",
+  "envivo": false,
+  "juegos": [],
+  "equipo": [],
+  "horario": "",
+  "temporada": true,
+  "fiesta": {
+    "id": "navidad",
+    "desde": "2026-11-15",
+    "hasta": "2026-11-16"
+  },
+  "mensajeFiesta": "",
+  "adviento": [
+    ""
+  ],
+  "altar": [],
+  "cumple": "",
+  "aniversario": "",
+  "tema": {
+    "modo": "oscuro",
+    "color": "azul"
+  },
+  "publicaciones": [],
+  "galeria": [],
+  "streams": [],
+  "redes": []
+}
