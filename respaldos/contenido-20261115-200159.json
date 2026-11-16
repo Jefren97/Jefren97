@@ -1,0 +1,19 @@
+{
+  "sobreMi": "Hola soy Jefren97, me encantan los videojuegos.",
+  "foto": "",
+  "canalTwitch": "",
+  "discord": "",
+  "envivo": false,
+  "juegos": [],
+  "equipo": [],
+  "horario": "",
+  "temporada": true,
+  "tema": {
+    "modo": "oscuro",
+    "color": "azul"
+  },
+  "publicaciones": [],
+  "galeria": [],
+  "streams": [],
+  "redes": []
+}
