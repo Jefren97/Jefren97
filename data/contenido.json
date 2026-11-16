@@ -36,7 +36,20 @@
       "programada": ""
     }
   ],
-  "galeria": [],
+  "galeria": [
+    {
+      "id": "17948699344830",
+      "titulo": "25 años 1",
+      "descripcion": "Xbox está cumpliendo 25 años🎂🎉",
+      "imagen": "imagenes\/app_1794869931150_0.jpg"
+    },
+    {
+      "id": "17948699344831",
+      "titulo": "25 años 2",
+      "descripcion": "Xbox está cumpliendo 25 años🎂🎉",
+      "imagen": "imagenes\/app_1794869932722_1.jpg"
+    }
+  ],
   "streams": [],
   "redes": []
 }
