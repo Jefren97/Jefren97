@@ -9,9 +9,9 @@
   "horario": "",
   "temporada": true,
   "fiesta": {
-    "id": "navidad",
-    "desde": "2026-11-15",
-    "hasta": "2026-11-16"
+    "id": "anonuevo",
+    "desde": "2026-11-17",
+    "hasta": "2026-11-18"
   },
   "mensajeFiesta": "",
   "adviento": [
