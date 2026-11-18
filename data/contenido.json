@@ -9,7 +9,7 @@
   "horario": "",
   "temporada": true,
   "fiesta": {
-    "id": "muertos",
+    "id": "halloween",
     "desde": "2026-11-17",
     "hasta": "2026-11-18"
   },
