@@ -1,0 +1,70 @@
+{
+  "sobreMi": "Hola soy Jefren97, Me encantan los vídeo juegos.\n\nMi lema: Diviértete, Vive la Vida, y Juega.",
+  "foto": "imagenes\/app_1794794683411_0.jpg",
+  "canalTwitch": "Jefren971",
+  "discord": "",
+  "envivo": false,
+  "juegos": [
+    "GTA V",
+    "Battlefield",
+    "Roblox",
+    "Fornite",
+    "Call of Duty"
+  ],
+  "equipo": [],
+  "horario": "",
+  "temporada": true,
+  "fiesta": {
+    "id": "halloween",
+    "desde": "2026-11-17",
+    "hasta": "2026-11-18"
+  },
+  "mensajeFiesta": "",
+  "adviento": [
+    ""
+  ],
+  "altar": [],
+  "cumple": "",
+  "aniversario": "",
+  "tema": {
+    "modo": "oscuro",
+    "color": "azul"
+  },
+  "publicaciones": [
+    {
+      "id": "1794794958215",
+      "titulo": "Emergencia 🚨🚑",
+      "texto": "Me encanta ese juego",
+      "fecha": "2026-11-15",
+      "imagen": "imagenes\/app_1794794954716_0.jpg",
+      "video": "https:\/\/youtube.com\/shorts\/daBsrV1VuMs?si=SSXCo5EpQHGDUX_D",
+      "fijado": true,
+      "programada": ""
+    }
+  ],
+  "galeria": [
+    {
+      "id": "17948699344830",
+      "titulo": "25 años 1",
+      "descripcion": "Xbox está cumpliendo 25 años🎂🎉",
+      "imagen": "imagenes\/app_1794869931150_0.jpg"
+    },
+    {
+      "id": "17948699344831",
+      "titulo": "25 años 2",
+      "descripcion": "Xbox está cumpliendo 25 años🎂🎉",
+      "imagen": "imagenes\/app_1794869932722_1.jpg"
+    }
+  ],
+  "streams": [],
+  "redes": [
+    {
+      "nombre": "Twitch",
+      "url": "https:\/\/www.twitch.tv\/jefren971?sr=a"
+    },
+    {
+      "nombre": "Yotube",
+      "url": "https:\/\/youtube.com\/@jefren97?si=lTptDxs6bcIgudOb"
+    }
+  ]
+}
