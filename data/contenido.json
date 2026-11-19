@@ -15,11 +15,11 @@
   "horario": "",
   "temporada": true,
   "fiesta": {
-    "id": "halloween",
-    "desde": "2026-11-17",
-    "hasta": "2026-11-18"
+    "id": "navidad",
+    "desde": "2026-11-19",
+    "hasta": "2026-12-28"
   },
-  "mensajeFiesta": "",
+  "mensajeFiesta": "Feliz navidad, sean felices, juegen mucho, y disfruten la vida 🤟🏻🤟🏻",
   "adviento": [
     ""
   ],
