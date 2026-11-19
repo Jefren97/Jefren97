@@ -57,5 +57,10 @@
     }
   ],
   "streams": [],
-  "redes": []
+  "redes": [
+    {
+      "nombre": "Twitch",
+      "url": "https:\/\/www.twitch.tv\/jefren971?sr=a"
+    }
+  ]
 }
